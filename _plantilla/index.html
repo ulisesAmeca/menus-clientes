@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Casona 54 — Menú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Zilla+Slab:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #1F3D34;
+    --ink-deep: #16302A;
+    --paper: #F4EFE3;
+    --gold: #C9A24B;
+    --rust: #A6472F;
+    --line: rgba(244,239,227,0.18);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{
+    background: var(--ink-deep);
+    color: var(--paper);
+    font-family: 'Zilla Slab', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body{
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--ink);
+    background-image:
+      radial-gradient(circle at 0% 0%, rgba(201,162,75,0.06), transparent 45%),
+      radial-gradient(circle at 100% 100%, rgba(166,71,47,0.08), transparent 50%);
+    padding-bottom: 48px;
+  }
+
+  header{
+    padding: 40px 28px 28px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .eyebrow{
+    font-family: 'Zilla Slab', serif;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  h1{
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1.02;
+    color: var(--paper);
+    letter-spacing: -0.01em;
+  }
+  .tagline{
+    margin-top: 12px;
+    font-size: 16px;
+    color: rgba(244,239,227,0.72);
+    max-width: 30ch;
+  }
+  .hours{
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(244,239,227,0.55);
+    display:flex;
+    gap: 18px;
+  }
+
+  nav{
+    display:flex;
+    overflow-x: auto;
+    gap: 4px;
+    padding: 18px 24px 0;
+    position: sticky;
+    top:0;
+    background: var(--ink);
+    z-index: 10;
+    scrollbar-width:none;
+  }
+  nav::-webkit-scrollbar{display:none;}
+  nav button{
+    flex: 0 0 auto;
+    background: transparent;
+    border: none;
+    color: rgba(244,239,227,0.5);
+    font-family: 'Zilla Slab', serif;
+    font-size: 15px;
+    padding: 10px 14px 14px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+    white-space: nowrap;
+  }
+  nav button.active{
+    color: var(--paper);
+    border-bottom-color: var(--gold);
+  }
+
+  main{ padding: 8px 28px 0; }
+  section{ display:none; padding-top: 28px; }
+  section.active{ display:block; }
+
+  .section-note{
+    font-size: 14px;
+    color: rgba(244,239,227,0.5);
+    margin-bottom: 22px;
+    max-width: 34ch;
+  }
+
+  .dish{
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    display:flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .dish:last-child{ border-bottom:none; }
+  .dish-name{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--paper);
+    line-height:1.25;
+  }
+  .dish-desc{
+    margin-top: 6px;
+    font-size: 14px;
+    color: rgba(244,239,227,0.6);
+    line-height: 1.4;
+  }
+  .dish-price{
+    font-family: 'Zilla Slab', serif;
+    font-size: 17px;
+    color: var(--gold);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+  .dish-tag{
+    display:inline-block;
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--rust);
+    border: 1px solid rgba(166,71,47,0.5);
+    padding: 2px 8px;
+    border-radius: 100px;
+  }
+
+  footer{
+    margin-top: 44px;
+    padding: 28px 28px 0;
+    border-top: 1px solid var(--line);
+    text-align:center;
+  }
+  footer p{
+    font-size: 13px;
+    color: rgba(244,239,227,0.45);
+    line-height: 1.6;
+  }
+  footer .brand{
+    font-family: 'Fraunces', serif;
+    color: var(--gold);
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Córdoba, Veracruz</div>
+  <h1>La Casona 54</h1>
+  <p class="tagline">Cocina de casa, servida en el patio de siempre.</p>
+  <div class="hours">
+    <span>Lun–Dom · 8:00–22:00</span>
+  </div>
+</header>
+
+<nav>
+  <button class="active" data-target="desayunos">Desayunos</button>
+  <button data-target="fuertes">Platos fuertes</button>
+  <button data-target="bebidas">Bebidas</button>
+  <button data-target="postres">Postres</button>
+</nav>
+
+<main>
+
+  <section id="desayunos" class="active">
+    <p class="section-note">Servidos hasta las 12:30, con pan de la casa y café de la región incluido.</p>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Chilaquiles de la casona</div>
+        <div class="dish-desc">Rojos o verdes, con pollo deshebrado, crema y queso fresco.</div>
+      </div>
+      <div class="dish-price">$95</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Huevos al gusto</div>
+        <div class="dish-desc">Rancheros, a la mexicana o al albañil. Con frijoles y tortillas hechas a mano.</div>
+      </div>
+      <div class="dish-price">$85</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Molletes de la abuela</div>
+        <div class="dish-desc">Pan campesino, frijol refrito, queso gratinado y pico de gallo.</div>
+        <span class="dish-tag">Vegetariano</span>
+      </div>
+      <div class="dish-price">$75</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Torta de elote de la casa</div>
+        <div class="dish-desc">Receta original del patio, servida tibia con crema.</div>
+      </div>
+      <div class="dish-price">$65</div>
+    </div>
+  </section>
+
+  <section id="fuertes">
+    <p class="section-note">Para comer con calma, como en casa de la familia.</p>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Mole de la casona</div>
+        <div class="dish-desc">Receta de generaciones, con pollo de rancho y arroz rojo.</div>
+      </div>
+      <div class="dish-price">$155</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Pepitos de res</div>
+        <div class="dish-desc">Pan francés, res a la plancha, aguacate y chiles toreados.</div>
+        <span class="dish-tag">Recomendado</span>
+      </div>
+      <div class="dish-price">$135</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Enchiladas veracruzanas</div>
+        <div class="dish-desc">Bañadas en salsa de la costa, rellenas de queso y crema.</div>
+      </div>
+      <div class="dish-price">$125</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Milanesa a la casona</div>
+        <div class="dish-desc">Empanizada en casa, con ensalada fresca y papas rústicas.</div>
+      </div>
+      <div class="dish-price">$140</div>
+    </div>
+  </section>
+
+  <section id="bebidas">
+    <p class="section-note">Café de altura de la región y refrescos de temporada.</p>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Café de olla</div>
+        <div class="dish-desc">Con piloncillo y canela, de grano local.</div>
+      </div>
+      <div class="dish-price">$40</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Agua de temporada</div>
+        <div class="dish-desc">Jamaica, horchata o limón con chía.</div>
+      </div>
+      <div class="dish-price">$35</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Chocolate caliente</div>
+        <div class="dish-desc">Batido a mano, receta de la región.</div>
+      </div>
+      <div class="dish-price">$45</div>
+    </div>
+  </section>
+
+  <section id="postres">
+    <p class="section-note">Hechos en casa, todos los días.</p>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Flan de la casona</div>
+        <div class="dish-desc">Receta clásica, sin prisa.</div>
+      </div>
+      <div class="dish-price">$55</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Pastel de elote</div>
+        <div class="dish-desc">Tibio, con un toque de canela.</div>
+      </div>
+      <div class="dish-price">$50</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="brand">La Casona 54</div>
+  <p>Calle 4 #509, Centro, Córdoba, Ver.<br>Precios en pesos mexicanos · IVA incluido</p>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('nav button');
+  const sections = document.querySelectorAll('main section');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.target).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+</script>
+
+</body>
+</html>
