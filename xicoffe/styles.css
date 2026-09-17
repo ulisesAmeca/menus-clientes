@@ -1,0 +1,259 @@
+:root{
+    --coffee-dark:#2A1B12;
+    --coffee-mid:#4A3222;
+    --kraft:#E4D6B8;
+    --kraft-dark:#D8C6A0;
+    --paper:#F2E9D4;
+    --gold:#C89A4E;
+    --clay:#B5673E;
+    --green:#4C6349;
+    --ink:#3B2A1C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--kraft);
+    background-image:
+      radial-gradient(rgba(59,42,28,0.05) 1px, transparent 1px),
+      radial-gradient(rgba(59,42,28,0.04) 1px, transparent 1px);
+    background-size:3px 3px, 7px 7px;
+    background-position:0 0, 2px 3px;
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:60px;
+  }
+
+  /* ---- hero ---- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(200,154,78,0.16) 0, transparent 45%),
+      radial-gradient(circle at 85% 85%, rgba(76,99,73,0.20) 0, transparent 50%),
+      var(--coffee-dark);
+    color:var(--paper);
+    padding:40px 24px 46px;
+    text-align:center;
+  }
+  .hero-top{display:flex;justify-content:center;align-items:center;gap:14px;}
+  .hero .mark{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:500;
+    font-size:2.5rem;
+    letter-spacing:0.01em;
+    line-height:1;
+  }
+  .hero .mark span{color:var(--gold);}
+  .hero .sub{
+    margin-top:10px;
+    font-family:'Caveat', cursive;
+    font-weight:600;
+    font-size:1.4rem;
+    color:var(--kraft-dark);
+  }
+  .hero .meta{
+    margin-top:22px;
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+    font-size:0.78rem;
+    color:var(--kraft-dark);
+  }
+  .hero .meta div{line-height:1.4;}
+  .hero .meta b{display:block;color:var(--paper);font-weight:500;font-size:0.8rem;}
+
+  .stamp{
+    flex:0 0 auto;
+    width:64px;height:64px;
+    border:1.5px dashed var(--gold);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    transform:rotate(-8deg);
+    opacity:0.9;
+  }
+  .stamp svg{width:40px;height:40px;}
+
+  /* torn paper divider under hero */
+  .tear{
+    display:block;
+    width:100%;
+    height:16px;
+    margin-top:-1px;
+  }
+
+  nav.pills{
+    position:sticky;
+    top:0;
+    z-index:10;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding:12px 16px;
+    background:var(--kraft);
+    border-bottom:1px dashed rgba(59,42,28,0.3);
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+  }
+  nav.pills::-webkit-scrollbar{display:none;}
+  nav.pills a{
+    flex:0 0 auto;
+    padding:7px 14px;
+    border-radius:20px;
+    border:1px solid rgba(59,42,28,0.3);
+    color:var(--coffee-mid);
+    text-decoration:none;
+    font-size:0.82rem;
+    font-weight:500;
+    white-space:nowrap;
+    background:var(--paper);
+    transition:background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  nav.pills a.active{
+    background:var(--coffee-dark);
+    border-color:var(--coffee-dark);
+    color:var(--paper);
+  }
+
+  main{max-width:640px;margin:0 auto;padding:8px 20px 0;}
+
+  section.cat{padding:34px 0 6px;scroll-margin-top:58px;}
+
+  /* photo placeholder banner */
+  .photo-slot{
+    position:relative;
+    height:150px;
+    border-radius:2px;
+    border:2px dashed rgba(59,42,28,0.35);
+    background:
+      linear-gradient(135deg, rgba(76,99,73,0.10) 25%, transparent 25%) -12px 0/24px 24px,
+      linear-gradient(225deg, rgba(76,99,73,0.10) 25%, transparent 25%) -12px 0/24px 24px,
+      var(--paper);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    color:var(--coffee-mid);
+    margin-bottom:16px;
+    overflow:hidden;
+  }
+  .photo-slot svg{width:34px;height:34px;opacity:0.6;}
+  .photo-slot span{font-size:0.78rem;font-weight:500;opacity:0.75;}
+  .photo-slot .tape{
+    position:absolute;
+    top:-8px;
+    width:46px;height:20px;
+    background:rgba(200,154,78,0.35);
+    transform:rotate(-4deg);
+    z-index:2;
+  }
+  .photo-slot .tape.l{left:18px;}
+  .photo-slot .tape.r{right:18px;transform:rotate(4deg);}
+
+  /* once a photo is dropped in, hide the placeholder icon/text
+     and let the image fill the frame */
+  .photo-slot img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 50%;
+    display:block;
+  }
+  .photo-slot img.contain{
+  object-fit:contain;
+  object-position:center;
+  background:var(--paper);
+}
+.photo-slot:has(img){
+  height:190px;
+}
+  .photo-slot:has(img){
+    border-style:solid;
+    border-color:rgba(59,42,28,0.15);
+  }
+  .photo-slot:has(img) > svg,
+  .photo-slot:has(img) > span:not(.tape){
+    display:none;
+  }
+
+  section.cat h2{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.35rem;
+    color:var(--coffee-dark);
+    margin-bottom:18px;
+  }
+  section.cat h2 svg{width:22px;height:22px;flex:0 0 auto;color:var(--green);}
+  section.cat h2 .underline{
+    flex:0 0 auto;
+    border-bottom:2px solid var(--green);
+    padding-bottom:4px;
+  }
+
+  .item{
+    padding:14px 0;
+    border-bottom:1px dotted rgba(59,42,28,0.25);
+  }
+  .item:last-child{border-bottom:none;}
+  .item-row{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .item-row .name{
+    font-weight:600;
+    font-size:1rem;
+    color:var(--coffee-dark);
+  }
+  .item-row .fill{
+    flex:1;
+    border-bottom:1px dotted rgba(59,42,28,0.35);
+    transform:translateY(-4px);
+  }
+  .item-row .price{
+    font-family:'Caveat', cursive;
+    font-weight:600;
+    font-size:1.25rem;
+    color:var(--clay);
+    white-space:nowrap;
+  }
+  .item .desc{
+    margin-top:4px;
+    font-size:0.85rem;
+    color:#5C4A3A;
+    line-height:1.45;
+    max-width:52ch;
+  }
+
+  footer{
+    margin-top:40px;
+    padding:30px 24px 10px;
+    text-align:center;
+    color:var(--coffee-mid);
+    font-size:0.82rem;
+    line-height:1.7;
+  }
+  footer .name{
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    color:var(--coffee-dark);
+    margin-bottom:4px;
+  }
+  footer .tag{
+    font-family:'Caveat', cursive;
+    color:#8A7350;
+    font-size:1rem;
+  }
+
+  @media (min-width:640px){
+    .hero{padding:56px 24px 54px;}
+    .hero .mark{font-size:3rem;}
+    .photo-slot{height:190px;}
+  }
